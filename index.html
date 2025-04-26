@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloky.pt - Ofertas Inteligentes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        header {
+            background-color: #44e394;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .hero {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .button {
+            background-color: #000000;
+            color: #44e394;
+            padding: 10px 20px;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: #eee;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bloky.pt</h1>
+    <nav>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Ofertas Inteligentes em Portugal 🇵🇹</h1>
+    <p>Os melhores produtos escolhidos para você, com entrega rápida e segura.</p>
+    <a class="button" href="#produtos">Ver Produtos</a>
+</section>
+
+<section id="produtos" class="products">
+    <div class="product-card">
+        <img src="https://via.placeholder.com/200x200.png?text=Produto+1" alt="Produto 1">
+        <h3>Auricular Bluetooth 5.0</h3>
+        <p>Som incrível e bateria de longa duração.</p>
+        <a class="button" href="#">Comprar Agora</a>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/200x200.png?text=Produto+2" alt="Produto 2">
+        <h3>Smartwatch Fit</h3>
+        <p>Acompanhe sua saúde e atividades em tempo real.</p>
+        <a class="button" href="#">Comprar Agora</a>
+    </div>
+
+    <div class="product-card">
+        <img src="https://via.placeholder.com/200x200.png?text=Produto+3" alt="Produto 3">
+        <h3>Coluna Bluetooth Portátil</h3>
+        <p>Leve sua música para onde quiser.</p>
+        <a class="button" href="#">Comprar Agora</a>
+    </div>
+</section>
+
+<section id="sobre" class="hero">
+    <h2>Sobre Nós</h2>
+    <p>Na Bloky.pt selecionamos apenas produtos de alta qualidade para garantir a melhor experiência para você!</p>
+</section>
+
+<section id="contato" class="hero">
+    <h2>Contato</h2>
+    <p>Tem alguma dúvida? Fale connosco: <strong>contato@bloky.pt</strong></p>
+</section>
+
+<footer>
+    © 2025 Bloky.pt - Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
