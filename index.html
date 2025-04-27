@@ -4,28 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bloky.pt - Ofertas Inteligentes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="icon" href="https://via.placeholder.com/32x32.png?text=B" type="image/png">
-  <style>
-    /* Animações simples */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s forwards;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <!-- Botão Instagram fixo -->
-  <a href="https://instagram.com/bloky_portugal" target="_blank" class="fixed bottom-5 right-5 bg-gradient-to-r from-pink-500 to-yellow-500 text-white p-3 rounded-full shadow-lg hover:scale-110 transition transform duration-300">
+  <!-- Botão Instagram -->
+  <a href="https://instagram.com/bloky_portugal" target="_blank" class="btn-instagram">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
@@ -34,53 +22,58 @@
   </a>
 
   <!-- HEADER -->
-  <header class="bg-indigo-600 text-white p-6 text-center shadow-md">
-    <h1 class="text-3xl font-bold mb-2">Bloky.pt</h1>
+  <header>
+    <h1>Bloky.pt</h1>
     <p>Ofertas Inteligentes em Portugal 🇵🇹</p>
   </header>
 
-  <!-- HERO Section -->
-  <section class="py-12 text-center fade-in">
-    <h2 class="text-4xl font-bold mb-4">Produtos Selecionados para Você</h2>
-    <p class="text-lg mb-6">Entrega rápida e garantida!</p>
-    <a href="#produtos" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full transition">Ver Produtos</a>
+  <!-- HERO -->
+  <section class="hero-section">
+    <h2>Produtos Selecionados para Você</h2>
+    <p>Entrega rápida e garantida!</p>
+    <a href="#produtos" class="btn-primary">Ver Produtos</a>
   </section>
 
   <!-- PRODUTOS -->
-  <section id="produtos" class="py-16 px-8 grid gap-8 md:grid-cols-3 fade-in">
-    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-      <img src="https://via.placeholder.com/300x200.png?text=Produto+1" alt="Produto 1" class="rounded mb-4">
-      <h3 class="text-xl font-semibold mb-2">Auricular Bluetooth 5.0</h3>
-      <p class="mb-4">Som perfeito e bateria de longa duração.</p>
-      <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded transition">Comprar Agora</a>
+  <section id="produtos">
+    <div class="produto-card">
+      <img src="./img/Produto 1.webp" alt="Produto 1">
+      <h3>Auricular Bluetooth 5.0</h3>
+      <p>Som perfeito e bateria de longa duração.</p>
+      <a href="#" class="btn-primary">Comprar Agora</a>
     </div>
 
-    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-      <img src="https://via.placeholder.com/300x200.png?text=Produto+2" alt="Produto 2" class="rounded mb-4">
-      <h3 class="text-xl font-semibold mb-2">Smartwatch Fit</h3>
-      <p class="mb-4">Monitore suas atividades e saúde em tempo real.</p>
-      <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded transition">Comprar Agora</a>
+    <div class="produto-card">
+      <img src="./img/produto 3.avif" alt="Produto 3">
+      <h3>Smartwatch Fit</h3>
+      <p>Monitore suas atividades e saúde em tempo real.</p>
+      <a href="#" class="btn-primary">Comprar Agora</a>
     </div>
 
-    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-      <img src="https://via.placeholder.com/300x200.png?text=Produto+3" alt="Produto 3" class="rounded mb-4">
-      <h3 class="text-xl font-semibold mb-2">Coluna Bluetooth Portátil</h3>
-      <p class="mb-4">Música de alta qualidade em qualquer lugar.</p>
-      <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded transition">Comprar Agora</a>
+    <div class="produto-card">
+      <img src="./img/produto 4.jpg" alt="Produto 4">
+      <h3>Coluna Bluetooth Portátil</h3>
+      <p>Música de alta qualidade em qualquer lugar.</p>
+      <a href="#" class="btn-primary">Comprar Agora</a>
+    </div>
+
+    <div class="produto-card">
+      <img src="./img/Produto 2.jpg" alt="Produto 2">
+      <h3>iPhone 15 Pro Max</h3>
+      <p>Produtos Apple com garantia.</p>
+      <a href="#" class="btn-primary">Comprar Agora</a>
     </div>
   </section>
 
   <!-- SOBRE NÓS -->
-  <section class="py-16 px-8 bg-indigo-50 text-center fade-in">
-    <h2 class="text-3xl font-bold mb-4">Sobre a Bloky.pt</h2>
-    <p class="text-lg max-w-2xl mx-auto">
-      Somos especialistas em encontrar os melhores produtos para Portugal. Priorizamos qualidade, preços justos e entrega rápida!
-    </p>
+  <section class="sobre-nos">
+    <h2>Sobre a Bloky.pt</h2>
+    <p>Somos especialistas em encontrar os melhores produtos para Portugal. Priorizamos qualidade, preços justos e entrega rápida!</p>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-indigo-600 text-white text-center p-6 mt-10">
-    © 2025 Bloky.pt - Todos os direitos reservados.
+  <footer>
+    <p>© 2025 Bloky.pt - Todos os direitos reservados.</p>
   </footer>
 
 </body>
