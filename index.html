@@ -19,6 +19,7 @@
       background-color: rgba(0,0,0,0.5);
       justify-content: center;
       align-items: center;
+      z-index: 1000;
     }
 
     .modal-conteudo {
@@ -29,6 +30,7 @@
       animation: fadeIn 0.3s ease;
       width: 80%;
       max-width: 400px;
+      position: relative;
     }
 
     .fechar {
@@ -37,6 +39,7 @@
       right: 20px;
       font-size: 30px;
       cursor: pointer;
+      color: #333;
     }
 
     /* Animação opcional */
@@ -49,6 +52,176 @@
       max-width: 100%;
       height: auto;
       margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    /* Estilo dos Produtos - Novo */
+    #produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 30px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .produto-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .produto-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .produto-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .produto-info {
+      padding: 15px;
+    }
+
+    .produto-card h3 {
+      margin: 0 0 5px;
+      color: #333;
+      font-size: 1.2rem;
+    }
+
+    .produto-card p {
+      color: #666;
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .preco-container {
+      margin: 15px 0;
+    }
+
+    .preco-antigo {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    .preco-desconto {
+      color: #e53935;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .preco-atual {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    .btn-comparar {
+      background: #ffffff;
+      color: rgb(0, 0, 0);
+      border: none;
+      border: solid 3px black;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-comparar:hover {
+      background: #0b7dda;
+      color: white;
+    }
+
+    .novidade-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #4CAF50;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: solid black 2px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    /* Botão Instagram */
+    .btn-instagram {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+    /* Header e Hero */
+    header {
+      text-align: center;
+      padding: 30px 0;
+      background: #f8f9fa;
+      border: solid 5px black;
+      border-radius: 5px;
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(13deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+      color: white;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+      color: rgb(255, 255, 255);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(19deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+      color: black;
+    }
+
+    /* Sobre nós e Footer */
+    .sobre-nos {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f8f9fa;
+      margin-top: 40px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
     }
   </style>
 </head>
@@ -57,10 +230,8 @@
 
   <!-- Botão Instagram -->
   <a href="https://instagram.com/bloky_portugal" target="_blank" class="btn-instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.5 6.5h.01" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
     </svg>
   </a>
 
@@ -80,31 +251,67 @@
   <!-- PRODUTOS -->
   <section id="produtos">
     <div class="produto-card">
-      <img src="./img/Produto 1.webp" alt="Produto 1">
-      <h3>Auricular Bluetooth 5.0</h3>
-      <p>Som perfeito e bateria de longa duração.</p>
-      <a href="#" class="btn-primary" onclick="abrirModal('Produto 1', 'Auricular Bluetooth 5.0', 'Som perfeito e bateria de longa duração.', './img/Produto 1.webp')">Comprar Agora</a>
+      <span class="novidade-badge">NOVIDADE</span>
+      <img src="./img/Produto 1.webp" alt="Auricular Bluetooth 5.0">
+      <div class="produto-info">
+        <h3>Auricular Bluetooth 5.0</h3>
+        <p>Cor: Preto</p>
+        <p>Bateria de longa duração (40h)</p>
+        <div class="preco-container">
+          <span class="preco-antigo">€59,90</span>
+          <span class="preco-desconto">Poupe €10,00</span>
+          <span class="preco-atual">€49,90</span>
+        </div>
+        <button class="btn-comparar" onclick="abrirModal('Produto 1', 'Auricular Bluetooth 5.0', 'Som perfeito e bateria de longa duração.', './img/Produto 1.webp')">Comparar</button>
+      </div>
     </div>
     
     <div class="produto-card">
-      <img src="./img/produto 3.avif" alt="Produto 3">
-      <h3>Smartwatch Fit</h3>
-      <p>Monitore suas atividades e saúde em tempo real.</p>
-      <a href="#" class="btn-primary" onclick="abrirModal('Produto 3', 'Smartwatch Fit', 'Monitore suas atividades e saúde em tempo real.', './img/produto 3.avif')">Comprar Agora</a>
+      <span class="novidade-badge">NOVIDADE</span>
+      <img src="./img/produto 3.avif" alt="Smartwatch Fit">
+      <div class="produto-info">
+        <h3>Smartwatch Fit</h3>
+        <p>Cor: Verde</p>
+        <p>Monitor de frequência cardíaca</p>
+        <div class="preco-container">
+          <span class="preco-antigo">€129,90</span>
+          <span class="preco-desconto">Poupe €30,00</span>
+          <span class="preco-atual">€99,90</span>
+        </div>
+        <button class="btn-comparar" onclick="abrirModal('Produto 3', 'Smartwatch Fit', 'Monitore suas atividades e saúde em tempo real.', './img/produto 3.avif')">Comparar</button>
+      </div>
     </div>
 
     <div class="produto-card">
-      <img src="./img/produto 4.jpg" alt="Produto 4">
-      <h3>Coluna Bluetooth Portátil</h3>
-      <p>Música de alta qualidade em qualquer lugar.</p>
-      <a href="#" class="btn-primary" onclick="abrirModal('Produto 4', 'Coluna Bluetooth Portátil', 'Música de alta qualidade em qualquer lugar.', './img/produto 4.jpg')">Comprar Agora</a>
+      <span class="novidade-badge">NOVIDADE</span>
+      <img src="./img/produto 4.jpg" alt="Coluna Bluetooth Portátil">
+      <div class="produto-info">
+        <h3>Coluna Bluetooth Portátil</h3>
+        <p>Cor: Azul</p>
+        <p>20W de potência</p>
+        <div class="preco-container">
+          <span class="preco-antigo">€79,90</span>
+          <span class="preco-desconto">Poupe €15,00</span>
+          <span class="preco-atual">€64,90</span>
+        </div>
+        <button class="btn-comparar" onclick="abrirModal('Produto 4', 'Coluna Bluetooth Portátil', 'Música de alta qualidade em qualquer lugar.', './img/produto 4.jpg')">Comparar</button>
+      </div>
     </div>
 
     <div class="produto-card">
-      <img src="./img/Produto 2.jpg" alt="Produto 2">
-      <h3>iPhone 15 Pro Max</h3>
-      <p>Produtos Apple com garantia.</p>
-      <a href="#" class="btn-primary" onclick="abrirModal('Produto 2', 'iPhone 15 Pro Max', 'Produtos Apple com garantia.', './img/Produto 2.jpg')">Comprar Agora</a>
+      <span class="novidade-badge">TOP</span>
+      <img src="./img/Produto 2.jpg" alt="iPhone 15 Pro Max">
+      <div class="produto-info">
+        <h3>iPhone 15 Pro Max</h3>
+        <p>Cor: Grafite</p>
+        <p>256GB - iOS 18</p>
+        <div class="preco-container">
+          <span class="preco-antigo">€1.299,90</span>
+          <span class="preco-desconto">Poupe €100,00</span>
+          <span class="preco-atual">€1.199,90</span>
+        </div>
+        <button class="btn-comparar" onclick="abrirModal('Produto 2', 'iPhone 15 Pro Max', 'Produtos Apple com garantia.', './img/Produto 2.jpg')">Comparar</button>
+      </div>
     </div>
   </section>
 
@@ -126,7 +333,7 @@
       <h2 id="modalNomeProduto">Nome do Produto</h2>
       <img id="modalImagemProduto" class="modal-imagem" src="" alt="Imagem do Produto">
       <p id="modalDescricao">Selecione um produto para ver os detalhes.</p>
-      <button>Adicionar ao Carrinho</button>
+      <button class="btn-primary" style="width: 100%; margin-top: 15px;">Adicionar ao Carrinho</button>
     </div>
   </div>
 
@@ -141,7 +348,14 @@
     function fecharModal() {
       document.getElementById('modalCompra').style.display = 'none';
     }
-  </script>
 
+    // Fechar modal ao clicar fora
+    window.onclick = function(event) {
+      const modal = document.getElementById('modalCompra');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
