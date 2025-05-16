@@ -1,361 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bloky.pt - Ofertas Inteligentes</title>
-
-  <link rel="icon" href="https://via.placeholder.com/32x32.png?text=B" type="image/png">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Modal */
-    .modal {
-      display: none; /* Escondido por padrão */
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-conteudo {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      animation: fadeIn 0.3s ease;
-      width: 80%;
-      max-width: 400px;
-      position: relative;
-    }
-
-    .fechar {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 30px;
-      cursor: pointer;
-      color: #333;
-    }
-
-    /* Animação opcional */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-imagem {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 8px;
-    }
-
-    /* Estilo dos Produtos - Novo */
-    #produtos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 25px;
-      padding: 30px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .produto-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .produto-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .produto-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-bottom: 1px solid #eee;
-    }
-
-    .produto-info {
-      padding: 15px;
-    }
-
-    .produto-card h3 {
-      margin: 0 0 5px;
-      color: #333;
-      font-size: 1.2rem;
-    }
-
-    .produto-card p {
-      color: #666;
-      margin: 5px 0;
-      font-size: 0.9rem;
-    }
-
-    .preco-container {
-      margin: 15px 0;
-    }
-
-    .preco-antigo {
-      text-decoration: line-through;
-      color: #999;
-      font-size: 0.9rem;
-    }
-
-    .preco-desconto {
-      color: #e53935;
-      font-weight: bold;
-      font-size: 0.9rem;
-      display: block;
-      margin: 5px 0;
-    }
-
-    .preco-atual {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #2e7d32;
-    }
-
-    .btn-comparar {
-      background: #ffffff;
-      color: rgb(0, 0, 0);
-      border: none;
-      border: solid 3px black;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-weight: bold;
-      transition: background 0.3s;
-      margin-top: 10px;
-    }
-
-    .btn-comparar:hover {
-      background: #0b7dda;
-      color: white;
-    }
-
-    .novidade-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #4CAF50;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 4px;
-      border: solid black 2px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      z-index: 1;
-    }
-
-    /* Botão Instagram */
-    .btn-instagram {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-    }
-
-    /* Header e Hero */
-    header {
-      text-align: center;
-      padding: 30px 0;
-      background: #f8f9fa;
-      border: solid 5px black;
-      border-radius: 5px;
-    }
-
-    .hero-section {
-      text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(13deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-      color: white;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-      color: rgb(255, 255, 255);
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 15px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(19deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-      color: black;
-    }
-
-    /* Sobre nós e Footer */
-    .sobre-nos {
-      text-align: center;
-      padding: 40px 20px;
-      background: #f8f9fa;
-      margin-top: 40px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #333;
-      color: white;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bloky.pt</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-  <!-- Botão Instagram -->
-  <a href="https://instagram.com/bloky_portugal" target="_blank" class="btn-instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
-
-  <!-- HEADER -->
-  <header>
-    <h1>Bloky.pt</h1>
-    <p>Ofertas Inteligentes em Portugal 🇵🇹</p>
+  <header class="mobile-header">
+    <button id="toggleSidebar">☰</button>
+    <div class="logo">Bloky.pt</div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero-section">
-    <h2>Produtos Selecionados para Você</h2>
-    <p>Entrega rápida e garantida!</p>
-    <a href="#produtos" class="btn-primary">Ver Produtos</a>
-  </section>
-
-  <!-- PRODUTOS -->
-  <section id="produtos">
-    <div class="produto-card">
-      <span class="novidade-badge">NOVIDADE</span>
-      <img src="./img/Produto 1.webp" alt="Auricular Bluetooth 5.0">
-      <div class="produto-info">
-        <h3>Auricular Bluetooth 5.0</h3>
-        <p>Cor: Preto</p>
-        <p>Bateria de longa duração (40h)</p>
-        <div class="preco-container">
-          <span class="preco-antigo">€59,90</span>
-          <span class="preco-desconto">Poupe €10,00</span>
-          <span class="preco-atual">€49,90</span>
-        </div>
-        <button class="btn-comparar" onclick="abrirModal('Produto 1', 'Auricular Bluetooth 5.0', 'Som perfeito e bateria de longa duração.', './img/Produto 1.webp')">Comparar</button>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <img src="./img/LOGO.png" alt="Logo Bloky.pt" class="logo-img" />
       </div>
-    </div>
-    
-    <div class="produto-card">
-      <span class="novidade-badge">NOVIDADE</span>
-      <img src="./img/produto 3.avif" alt="Smartwatch Fit">
-      <div class="produto-info">
-        <h3>Smartwatch Fit</h3>
-        <p>Cor: Verde</p>
-        <p>Monitor de frequência cardíaca</p>
-        <div class="preco-container">
-          <span class="preco-antigo">€129,90</span>
-          <span class="preco-desconto">Poupe €30,00</span>
-          <span class="preco-atual">€99,90</span>
+      <button class="upload-btn">📤 Carregar Produto</button>
+
+      <h4>Categoria</h4>
+      <nav class="menu">
+        <a href="#" data-category="todos" class="active">Todos</a>
+        <a href="#" data-category="eletronicos">Eletrônicos</a>
+        <a href="#" data-category="casa">Casa</a>
+        <a href="#" data-category="roupas">Roupas</a>
+      </nav>
+
+      <h4>Preço</h4>
+      <nav class="menu">
+        <a href="#" data-price="todos" class="active">Todos</a>
+        <a href="#" data-price="ate50">Até R$50</a>
+        <a href="#" data-price="50a100">R$50 a R$100</a>
+        <a href="#" data-price="100mais">Acima de R$100</a>
+      </nav>
+    </aside>
+
+    <!-- Feed -->
+    <main class="feed">
+      <h1>Produtos em Oferta</h1>
+      <div class="product-list" id="products">
+        <div class="product-card" data-category="eletronicos" data-price="99.90">
+          <img src="https://via.placeholder.com/300x300" alt="Produto">
+          <h2>Fone Bluetooth</h2>
+          <p class="price">R$ 99,90</p>
+          <a href="#" class="buy-btn">Comprar</a>
         </div>
-        <button class="btn-comparar" onclick="abrirModal('Produto 3', 'Smartwatch Fit', 'Monitore suas atividades e saúde em tempo real.', './img/produto 3.avif')">Comparar</button>
-      </div>
-    </div>
 
-    <div class="produto-card">
-      <span class="novidade-badge">NOVIDADE</span>
-      <img src="./img/produto 4.jpg" alt="Coluna Bluetooth Portátil">
-      <div class="produto-info">
-        <h3>Coluna Bluetooth Portátil</h3>
-        <p>Cor: Azul</p>
-        <p>20W de potência</p>
-        <div class="preco-container">
-          <span class="preco-antigo">€79,90</span>
-          <span class="preco-desconto">Poupe €15,00</span>
-          <span class="preco-atual">€64,90</span>
+        <div class="product-card" data-category="casa" data-price="45.00">
+          <img src="https://via.placeholder.com/300x300" alt="Produto">
+          <h2>Panela Antiaderente</h2>
+          <p class="price">R$ 45,00</p>
+          <a href="#" class="buy-btn">Comprar</a>
         </div>
-        <button class="btn-comparar" onclick="abrirModal('Produto 4', 'Coluna Bluetooth Portátil', 'Música de alta qualidade em qualquer lugar.', './img/produto 4.jpg')">Comparar</button>
-      </div>
-    </div>
 
-    <div class="produto-card">
-      <span class="novidade-badge">TOP</span>
-      <img src="./img/Produto 2.jpg" alt="iPhone 15 Pro Max">
-      <div class="produto-info">
-        <h3>iPhone 15 Pro Max</h3>
-        <p>Cor: Grafite</p>
-        <p>256GB - iOS 18</p>
-        <div class="preco-container">
-          <span class="preco-antigo">€1.299,90</span>
-          <span class="preco-desconto">Poupe €100,00</span>
-          <span class="preco-atual">€1.199,90</span>
+        <div class="product-card" data-category="roupas" data-price="119.90">
+          <img src="https://via.placeholder.com/300x300" alt="Produto">
+          <h2>Jaqueta de Couro</h2>
+          <p class="price">R$ 119,90</p>
+          <a href="#" class="buy-btn">Comprar</a>
         </div>
-        <button class="btn-comparar" onclick="abrirModal('Produto 2', 'iPhone 15 Pro Max', 'Produtos Apple com garantia.', './img/Produto 2.jpg')">Comparar</button>
       </div>
-    </div>
-  </section>
+    </main>
 
-  <!-- SOBRE NÓS -->
-  <section class="sobre-nos">
-    <h2>Sobre a Bloky.pt</h2>
-    <p>Somos especialistas em encontrar os melhores produtos para Portugal. Priorizamos qualidade, preços justos e entrega rápida!</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Bloky.pt - Todos os direitos reservados.</p>
-  </footer>
-
-  <!-- Modal -->
-  <div id="modalCompra" class="modal">
-    <div class="modal-conteudo">
-      <span class="fechar" onclick="fecharModal()">&times;</span>
-      <h2 id="modalNomeProduto">Nome do Produto</h2>
-      <img id="modalImagemProduto" class="modal-imagem" src="" alt="Imagem do Produto">
-      <p id="modalDescricao">Selecione um produto para ver os detalhes.</p>
-      <button class="btn-primary" style="width: 100%; margin-top: 15px;">Adicionar ao Carrinho</button>
-    </div>
+    <!-- Tags -->
+    <aside class="tags">
+      <h3>Tags recomendadas</h3>
+      <div class="tag-list">
+        <span>#Promoções</span>
+        <span>#Tecnologia</span>
+        <span>#Casa</span>
+        <span>#Moda</span>
+        <span>#Fitness</span>
+      </div>
+    </aside>
   </div>
 
-  <script>
-    function abrirModal(nomeProduto, descricaoProduto, descricaoTexto, imagemProduto) {
-      document.getElementById('modalCompra').style.display = 'flex';
-      document.getElementById('modalNomeProduto').textContent = nomeProduto;
-      document.getElementById('modalDescricao').textContent = descricaoTexto;
-      document.getElementById('modalImagemProduto').src = imagemProduto;
-    }
-
-    function fecharModal() {
-      document.getElementById('modalCompra').style.display = 'none';
-    }
-
-    // Fechar modal ao clicar fora
-    window.onclick = function(event) {
-      const modal = document.getElementById('modalCompra');
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
